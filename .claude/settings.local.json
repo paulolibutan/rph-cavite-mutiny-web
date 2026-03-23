@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "WebSearch",
+      "WebFetch(domain:nhcp.gov.ph)",
+      "WebFetch(domain:jenikirbyhistory.getarchive.net)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:www.flickr.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:picryl.com)",
+      "WebFetch(domain:a.osmarks.net)",
+      "WebFetch(domain:justapedia.org)"
+    ]
+  }
+}

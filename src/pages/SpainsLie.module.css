@@ -1,0 +1,188 @@
+.section {
+  background: linear-gradient(160deg, var(--color-crimson-dark) 0%, var(--color-ink) 40%, var(--color-smoke) 100%);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Framing row — portrait left, note right */
+.framingRow {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.izquierdoPortrait {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .framingRow {
+    grid-template-columns: 1fr;
+  }
+  .izquierdoPortrait {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+/* Framing note */
+.framingNote {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.5rem;
+  background: rgba(245, 230, 200, 0.05);
+  border: 1px solid rgba(245, 230, 200, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.framingIcon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.framingNote p {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+  line-height: 1.82;
+  color: var(--color-parchment);
+  opacity: 0.8;
+}
+
+.framingNote strong {
+  color: var(--color-gold-bright);
+  font-weight: 500;
+}
+
+.comparisons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Pull quote */
+.pullQuote {
+  position: relative;
+  padding: 2.5rem 2rem 2rem;
+  background: rgba(139, 26, 26, 0.15);
+  border: 1px solid rgba(139, 26, 26, 0.3);
+  border-left: 4px solid var(--color-crimson);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quoteIcon {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  line-height: 0.6;
+  color: var(--color-crimson);
+  opacity: 0.35;
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  user-select: none;
+}
+
+.pullQuote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--color-parchment);
+  padding-left: 2rem;
+}
+
+.pullQuote cite {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--color-parchment);
+  opacity: 0.55;
+  font-style: normal;
+  letter-spacing: 0.04em;
+  padding-left: 2rem;
+}
+
+.pullQuote cite em {
+  font-style: italic;
+}
+
+/* Gazette */
+.gazetteSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gazetteLabel {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  opacity: 0.65;
+}
+
+.gazetteTrack {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold-deep) transparent;
+}
+
+.gazetteTrack::-webkit-scrollbar { height: 4px; }
+.gazetteTrack::-webkit-scrollbar-thumb { background: var(--color-gold-deep); border-radius: 2px; }
+
+.gazetteCard {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: clamp(240px, 30vw, 300px);
+  padding: 1.5rem;
+  background: rgba(245, 230, 200, 0.04);
+  border: 1px solid rgba(245, 230, 200, 0.1);
+  border-top: 3px solid var(--color-crimson);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.gazetteDate {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-crimson);
+  opacity: 0.85;
+}
+
+.gazetteHeadline {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--color-parchment);
+}
+
+.gazetteBody {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--color-parchment);
+  opacity: 0.65;
+}

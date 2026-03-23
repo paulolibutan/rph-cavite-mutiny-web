@@ -1,0 +1,230 @@
+.wrapper {
+  perspective: 1100px;
+  /* No Framer Motion transforms live here anymore — this is a stable
+     perspective container. The entry animation is on the outer motion.div
+     in FlipCard.jsx, keeping translateY and perspective fully separated. */
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  /* 600px gives each back face enough room at 3-column desktop widths (~380px
+     per card). At tablet (≤1100px) the grid collapses to 1 column so cards
+     become much wider — content wraps less — allowing a shorter height there. */
+  height: 600px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+  /* pointer so users know the card is clickable on all devices */
+  cursor: pointer;
+}
+
+/* Unified click-to-flip — applies on both desktop and mobile.
+   The old CSS :hover rule was removed: hover caused the card to stay locked
+   on the back face for as long as the cursor sat anywhere on the card, which
+   felt broken and gave the user no intentional control. */
+.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ── Tablet (769 px – 1100 px): grid is now 1-col (see Gomburza.module.css).
+   Cards span the full container width so bio text wraps far less than in the
+   3-column desktop layout.  A shorter fixed height is safe here. */
+@media (max-width: 1100px) {
+  .card { height: 520px; }
+}
+
+/* ── Mobile (≤ 768 px) ── */
+@media (max-width: 768px) {
+  .wrapper {
+    /* Remove depth perspective on mobile — the nav z-index: 100000 already
+       prevents any 3D-layer bleed-through, and perspective: none stops the
+       perspective viewport from shifting on small screens. */
+    perspective: none;
+  }
+
+  .card {
+    /* Full-width single-column cards → even less text wrapping → 480 px is safe. */
+    height: 480px;
+  }
+}
+
+/* Shared face */
+.face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-lg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Front face */
+.face:not(.back) {
+  background: linear-gradient(160deg, rgba(42, 31, 20, 0.95) 0%, rgba(26, 18, 8, 0.98) 100%);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  gap: 0.5rem;
+}
+
+/* Portrait placeholder slot — fills the upper ~60% of the card */
+.portraitSlot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Leave room for the frontContent bar at the bottom */
+  bottom: 140px;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.portraitSlot > * {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/* Keep the old silhouette class but hide it now that we have the placeholder */
+.silhouette {
+  display: none;
+}
+
+.frontContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(212, 160, 23, 0.15);
+  width: 100%;
+}
+
+.order {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--color-gold-bright);
+  opacity: 0.5;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  color: var(--color-parchment);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.title {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--color-gold-bright);
+  opacity: 0.7;
+}
+
+.years {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--color-parchment);
+  opacity: 0.4;
+}
+
+.flipHint {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  opacity: 0.35;
+  margin-top: 0.25rem;
+}
+
+/* Back face */
+.back {
+  background: linear-gradient(160deg, var(--color-crimson-dark) 0%, rgba(92, 15, 15, 0.95) 100%);
+  border: 1px solid rgba(139, 26, 26, 0.4);
+  transform: rotateY(180deg);
+
+  /* BUG FIX — was "center": when bio text overflows the fixed card height,
+     centering clips content invisibly from BOTH top and bottom.
+     flex-start aligns from the top so any overflow only clips at the bottom
+     (less jarring) and overflow-y: auto provides a themed scrollbar as a
+     hard safety net for very narrow viewport widths. */
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Tighter padding/gap reclaims ~24 px of vertical space */
+  padding: 1.6rem 1.5rem;
+  gap: 0.6rem;
+
+  /* Minimal gold scrollbar — visible enough to signal scrollability */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 160, 23, 0.35) transparent;
+}
+
+.back::-webkit-scrollbar { width: 4px; }
+.back::-webkit-scrollbar-track { background: transparent; }
+.back::-webkit-scrollbar-thumb {
+  background: rgba(212, 160, 23, 0.35);
+  border-radius: 2px;
+}
+
+.backName {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  color: var(--color-gold-bright);
+  letter-spacing: -0.01em;
+}
+
+.descriptor {
+  font-family: var(--font-display);
+  /* Reduced from clamp(1.1rem, 2vw, 1.3rem) — was too large at desktop 3-col
+     widths, eating into the height budget needed for the bio paragraph. */
+  font-size: clamp(0.92rem, 1.5vw, 1.05rem);
+  font-style: italic;
+  color: var(--color-parchment);
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+.bio {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 1.1vw, 0.88rem);
+  /* Reduced from 1.75 — saves ~1 line height per 10 lines of text */
+  line-height: 1.65;
+  color: var(--color-parchment);
+  opacity: 0.75;
+}
+
+.epitaph {
+  /* BUG FIX — was "margin-top: auto": with justify-content: flex-start this
+     still pushes the epitaph down, but if the content above already fills
+     the card the auto margin collapses to 0 and the epitaph clips.
+     Using a fixed top margin + flex-shrink: 0 keeps it visible at all sizes
+     while the overflow-y: auto on .back scrolls to it when needed. */
+  margin-top: 0.5rem;
+  flex-shrink: 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.epitaph p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.78rem, 1.1vw, 0.88rem);
+  line-height: 1.55;
+  color: var(--color-gold-bright);
+  opacity: 0.8;
+}

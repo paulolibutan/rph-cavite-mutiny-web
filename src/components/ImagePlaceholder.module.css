@@ -1,0 +1,111 @@
+/* ── ImagePlaceholder ────────────────────────────────────────────────────── */
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Size variants */
+.sm  { max-width: 220px; }
+.md  { max-width: 420px; }
+.lg  { max-width: 640px; }
+.full { max-width: 100%; }
+
+/* Inner dashed box */
+.inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(26, 18, 8, 0.55);
+  border: 1.5px dashed rgba(212, 160, 23, 0.35);
+  border-radius: var(--radius-md);
+
+  /* Subtle noise texture so it looks intentional, not broken */
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(212, 160, 23, 0.015) 0px,
+      rgba(212, 160, 23, 0.015) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  position: relative;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.inner:hover {
+  border-color: rgba(212, 160, 23, 0.55);
+  background: rgba(26, 18, 8, 0.65);
+}
+
+/* Camera icon */
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: rgba(212, 160, 23, 0.45);
+  flex-shrink: 0;
+}
+
+/* What the image depicts */
+.label {
+  font-family: var(--font-serif);
+  font-size: clamp(0.78rem, 1.2vw, 0.88rem);
+  font-weight: 600;
+  color: var(--color-parchment);
+  opacity: 0.75;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 24ch;
+}
+
+/* Source line */
+.sourceText {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--color-parchment);
+  opacity: 0.38;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.sourcePrefix {
+  opacity: 0.7;
+}
+
+/* "IMAGE PLACEHOLDER" badge */
+.badge {
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+  opacity: 0.3;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(212, 160, 23, 0.18);
+  border-radius: 2px;
+  margin-top: 0.25rem;
+}
+
+/* Optional figcaption */
+.caption {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--color-parchment);
+  opacity: 0.45;
+  text-align: center;
+  padding: 0.5rem 0.75rem 0;
+  font-style: italic;
+  line-height: 1.5;
+}

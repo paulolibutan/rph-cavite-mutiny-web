@@ -1,0 +1,56 @@
+.wrapper {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.centerLabel {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  fill: #D4A017;
+  letter-spacing: 0.02em;
+}
+
+.centerSub {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 11px;
+  fill: rgba(245, 230, 200, 0.55);
+  font-style: italic;
+}
+
+.ringLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  background: rgba(26, 18, 8, 0.7);
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+.ringLabelTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ringLabelSub {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 11px;
+  color: rgba(245, 230, 200, 0.5);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+@media (max-width: 480px) {
+  .wrapper { max-width: 100%; }
+}
