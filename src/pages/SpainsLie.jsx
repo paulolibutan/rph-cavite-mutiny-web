@@ -68,13 +68,17 @@ export default function SpainsLie() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
         >
-          <ImagePlaceholder
-            label="Governor-General Rafael de Izquierdo, c. 1871–1873"
-            source="Wikimedia Commons / Biblioteca Nacional de España"
-            aspectRatio="3 / 4"
-            size="full"
-            caption="Izquierdo arrived with an explicit mandate to roll back liberal reforms. He needed the mutiny to be a conspiracy."
-          />
+          <figure className={styles.izquierdoFigure}>
+            <img
+              src="/images/rafael-izquierdo.jpg"
+              alt="Governor-General Rafael de Izquierdo, c. 1871–1873"
+              className={styles.izquierdoImg}
+            />
+            <figcaption className={styles.izquierdoCaption}>
+              Izquierdo arrived with an explicit mandate to roll back liberal reforms.
+              He needed the mutiny to be a conspiracy.
+            </figcaption>
+          </figure>
         </motion.div>
 
       {/* Historian framing note */}

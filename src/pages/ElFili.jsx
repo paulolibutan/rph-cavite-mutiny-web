@@ -52,22 +52,30 @@ export default function ElFili() {
           transition={{ duration: 0.6 }}
         >
           <div className={styles.rizalPortrait}>
-            <ImagePlaceholder
-              label="José Rizal, c. 1890 — Brussels or Ghent"
-              source="Wikimedia Commons / Rizal Library, Ateneo de Manila"
-              aspectRatio="3 / 4"
-              size="full"
-              caption="Rizal was 29 when El Filibusterismo was published. He paid for printing in installments — nearly destitute in exile."
-            />
+            <figure className={styles.elFiliFigure}>
+              <img
+                src="/images/jose-rizal.jpg"
+                alt="José Rizal, c. 1890 — Brussels or Ghent"
+                className={styles.elFiliImg}
+              />
+              <figcaption className={styles.elFiliCaption}>
+                Rizal was 29 when <em>El Filibusterismo</em> was published. He paid for
+                printing in installments — nearly destitute in exile.
+              </figcaption>
+            </figure>
           </div>
           <div className={styles.rizalBookCover}>
-            <ImagePlaceholder
-              label="El Filibusterismo — first edition cover, Ghent 1891"
-              source="Wikimedia Commons / F. Meyer-Van Loo Press"
-              aspectRatio="3 / 4"
-              size="full"
-              caption="The first edition. ~2,000 copies printed. Immediately banned by Spanish colonial authorities in the Philippines."
-            />
+            <figure className={styles.elFiliFigure}>
+              <img
+                src="/images/el-fili.jpg"
+                alt="El Filibusterismo — first edition cover, Ghent 1891"
+                className={styles.elFiliImg}
+              />
+              <figcaption className={styles.elFiliCaption}>
+                The first edition. ~2,000 copies printed. Immediately banned by Spanish
+                colonial authorities in the Philippines.
+              </figcaption>
+            </figure>
           </div>
         </motion.div>
 

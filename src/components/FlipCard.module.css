@@ -88,6 +88,36 @@
   border-radius: 0;
 }
 
+.portraitImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.imgCredit {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.5rem;
+  /* reset the blanket width/height from .portraitSlot > * */
+  width: auto !important;
+  height: auto !important;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  color: rgba(245, 230, 200, 0.45);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.imgCredit:hover {
+  color: rgba(212, 160, 23, 0.85);
+  text-decoration: underline;
+}
+
 /* Keep the old silhouette class but hide it now that we have the placeholder */
 .silhouette {
   display: none;

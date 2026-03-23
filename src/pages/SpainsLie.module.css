@@ -24,6 +24,35 @@
   width: 100%;
 }
 
+.izquierdoFigure {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.izquierdoImg {
+  width: 100%;
+  display: block;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.izquierdoCaption {
+  padding: 0.5rem 0.65rem 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--color-parchment);
+  opacity: 0.55;
+  background: rgba(10, 7, 3, 0.6);
+}
+
 @media (max-width: 768px) {
   .framingRow {
     grid-template-columns: 1fr;
@@ -160,6 +189,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .gazetteCard {
+    width: clamp(260px, 82vw, 320px);
+  }
 }
 
 .gazetteDate {

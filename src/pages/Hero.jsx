@@ -80,13 +80,17 @@ export default function Hero({ reduceMotion }) {
 
         {/* Historical map inset — inside the content column so it stays centred */}
         <motion.div className={styles.mapInset} variants={itemVariants}>
-          <ImagePlaceholder
-            label="Map of Manila Bay & Cavite Arsenal, c. 1872"
-            source="Wikimedia Commons / Philippine National Archives"
-            aspectRatio="16 / 7"
-            size="full"
-            caption="Fort San Felipe sat at the tip of the Cavite peninsula — 30 km from Manila, isolated enough that the expected uprising across the bay never came."
-          />
+          <figure className={styles.mapFigure}>
+            <img
+              src="/images/cavite-manila-bay.jpg"
+              alt="Map of Manila Bay and Cavite Arsenal, c. 1872"
+              className={styles.mapImg}
+            />
+            <figcaption className={styles.mapCaption}>
+              Fort San Felipe sat at the tip of the Cavite peninsula — 30 km from Manila,
+              isolated enough that the expected uprising across the bay never came.
+            </figcaption>
+          </figure>
         </motion.div>
       </motion.div>
 

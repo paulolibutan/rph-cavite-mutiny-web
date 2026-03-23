@@ -101,13 +101,17 @@ export default function Revolution() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <ImagePlaceholder
-              label="Andrés Bonifacio, Supremo of the Katipunan, c. 1894"
-              source="Wikimedia Commons / National Historical Commission of the Philippines"
-              aspectRatio="3 / 4"
-              size="full"
-              caption="Bonifacio read both Noli Me Tangere and El Filibusterismo before founding the Katipunan on July 7, 1892."
-            />
+            <figure className={styles.revFigure}>
+              <img
+                src="/images/andres-bonifacio.jpg"
+                alt="Andrés Bonifacio, Supremo of the Katipunan, c. 1894"
+                className={styles.revImg}
+              />
+              <figcaption className={styles.revCaption}>
+                Bonifacio read both <em>Noli Me Tangere</em> and <em>El Filibusterismo</em> before
+                founding the Katipunan on July 7, 1892.
+              </figcaption>
+            </figure>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -115,13 +119,17 @@ export default function Revolution() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.12 }}
           >
-            <ImagePlaceholder
-              label="Cry of Pugad Lawin — August 23, 1896"
-              source="Wikimedia Commons / Carlos 'Botong' Francisco mural, 1964"
-              aspectRatio="3 / 4"
-              size="full"
-              caption="Katipuneros tore their cedulas (community tax certificates) as an act of defiance, launching the Philippine Revolution."
-            />
+            <figure className={styles.revFigure}>
+              <img
+                src="/images/cry-of-pugad-lawin.jpg"
+                alt="Cry of Pugad Lawin — August 23, 1896"
+                className={styles.revImg}
+              />
+              <figcaption className={styles.revCaption}>
+                Katipuneros tore their <em>cedulas</em> (community tax certificates) as an act
+                of defiance, launching the Philippine Revolution.
+              </figcaption>
+            </figure>
           </motion.div>
         </div>
 

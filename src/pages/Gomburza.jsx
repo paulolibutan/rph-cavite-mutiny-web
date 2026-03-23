@@ -8,6 +8,8 @@ import styles from './Gomburza.module.css'
 const PRIESTS = [
   {
     name: 'Fr. Mariano Gomez',
+    img: '/images/mariano-gomez.jpg',
+    imgSource: 'https://dioceseofimus.org/history/beginnings/secular-foundations',
     title: 'The Elder Patriarch',
     years: 'Born Aug. 2, 1799 · Age 72 at execution',
     descriptor: '"Quiet strength can shake empires."',
@@ -16,6 +18,8 @@ const PRIESTS = [
   },
   {
     name: 'Fr. Jose Burgos',
+    img: '/images/jose-burgos.jpg',
+    imgSource: 'https://dioceseofimus.org/history/beginnings/secular-foundations',
     title: 'The Voice of Reform',
     years: 'Born Feb. 9, 1837 · Age 35 at execution',
     descriptor: '"To write truth is to resist tyranny."',
@@ -24,6 +28,8 @@ const PRIESTS = [
   },
   {
     name: 'Fr. Jacinto Zamora',
+    img: '/images/jacinto-zamora.jpg',
+    imgSource: 'https://dioceseofimus.org/history/beginnings/secular-foundations',
     title: 'The Gentle Musician',
     years: 'Born Aug. 14, 1835 · Age 37 at execution',
     descriptor: '"Innocence is no shield against empire."',
@@ -75,13 +81,17 @@ export default function Gomburza() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.65 }}
         >
-          <ImagePlaceholder
-            label="Execution of GOMBURZA at Bagumbayan Field, February 17, 1872"
-            source="Wikimedia Commons / La Ilustración Española y Americana, 1872"
-            aspectRatio="16 / 7"
-            size="full"
-            caption="An estimated 40,000 Filipinos witnessed the garrote executions. Edmond Plauchut's eyewitness account, published in La Solidaridad in 1892, remains the primary record."
-          />
+          <figure className={styles.executionFigure}>
+            <img
+              src="/images/gomburza.jpg"
+              alt="Execution of GOMBURZA at Bagumbayan Field, February 17, 1872"
+              className={styles.executionImg}
+            />
+            <figcaption className={styles.executionFigCaption}>
+              An estimated 40,000 Filipinos witnessed the garrote executions. Edmond Plauchut's
+              eyewitness account, published in <em>La Solidaridad</em> in 1892, remains the primary record.
+            </figcaption>
+          </figure>
         </motion.div>
 
         {/* Paciano connection callout */}

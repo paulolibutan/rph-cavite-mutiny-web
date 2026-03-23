@@ -44,14 +44,35 @@ export default function FlipCard({ priest, index }) {
         >
           {/* Front */}
           <div className={styles.face}>
-            {/* Portrait placeholder — replace with <img> when sourced */}
+            {/* Portrait — uses real image if provided, falls back to placeholder */}
             <div className={styles.portraitSlot}>
-              <ImagePlaceholder
-                label={`Historical portrait of ${priest.name}`}
-                source="Wikimedia Commons / López Enguídanos engravings, 1895"
-                aspectRatio="3 / 4"
-                size="full"
-              />
+              {priest.img ? (
+                <>
+                  <img
+                    src={priest.img}
+                    alt={`Historical portrait of ${priest.name}`}
+                    className={styles.portraitImg}
+                  />
+                  {priest.imgSource && (
+                    <a
+                      href={priest.imgSource}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.imgCredit}
+                      onClick={e => e.stopPropagation()}
+                    >
+                      Source: Diocese of Imus
+                    </a>
+                  )}
+                </>
+              ) : (
+                <ImagePlaceholder
+                  label={`Historical portrait of ${priest.name}`}
+                  source="Wikimedia Commons / López Enguídanos engravings, 1895"
+                  aspectRatio="3 / 4"
+                  size="full"
+                />
+              )}
             </div>
             <div className={styles.frontContent}>
               <span className={styles.order}>{String(index + 1).padStart(2, '0')}</span>

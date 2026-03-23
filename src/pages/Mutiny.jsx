@@ -98,13 +98,17 @@ export default function Mutiny() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.65 }}
       >
-        <ImagePlaceholder
-          label="Fort San Felipe & the Cavite Arsenal, 1872"
-          source="Wikimedia Commons / Archivo General de Indias (Seville)"
-          aspectRatio="21 / 9"
-          size="full"
-          caption="The arsenal sat at the peninsula's tip — the site where 200 workers and soldiers seized Fort San Felipe on the night of January 20, 1872."
-        />
+        <figure className={styles.fortFigure}>
+          <img
+            src="/images/fort-san-felipe.jpg"
+            alt="Fort San Felipe and the Cavite Arsenal, 1872"
+            className={styles.fortImg}
+          />
+          <figcaption className={styles.fortCaption}>
+            The arsenal sat at the peninsula's tip — the site where 200 workers and soldiers
+            seized Fort San Felipe on the night of January 20, 1872.
+          </figcaption>
+        </figure>
       </motion.div>
 
       {/* Balance scale */}
